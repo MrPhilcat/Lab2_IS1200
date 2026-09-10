@@ -12,6 +12,16 @@
 char* text1 = "This is a string.";
 char* text2 = "Yet another thing.";
 
+// Declare additionally needed variable
+char list1[80];
+char list2[80];
+
+int counter = 0;
+
+void work(){
+  copycodes(text1, list1, counter);
+}
+
 void printlist(const int* lst){
   printf("ASCII codes and corresponding characters.\n");
   while(*lst != 0){
@@ -28,7 +38,6 @@ void endian_proof(const char* c){
 }
 
 int main(void){
- 
     work();
     printf("\nlist1: ");
     printlist(list1);
