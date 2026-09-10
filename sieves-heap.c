@@ -26,7 +26,7 @@ void print_number(int n){
 }
 
 void print_sieves(int n){
-    unsigned char arr[n-1];
+    unsigned char* arr = malloc((n-1)*sizeof(unsigned char));
     for(unsigned char i = 0; i <= (n - 2); i++){
         arr[i] = i + 2;
     }
@@ -51,34 +51,7 @@ void print_sieves(int n){
         if(arr[i] != 0)
             print_number(arr[i]);
     }
-}
-
-void print_sieves_cool(int n){
-    int myArray[n+1];
-    myArray[0] = 1;
-    myArray[1] = 1;
-    for(int i = 2; i <= n; i++){
-        myArray[i] = 0;
-    }
-
-    while (1){
-        int lastPrime = 0;
-        int j = 2;
-        while (lastPrime == 0){
-            if(myArray[j] == 0)
-                lastPrime = j;
-            if(j > n){
-                return;
-            }
-            j++;
-        }
-        print_number(lastPrime);
-    
-        for(int i = lastPrime; i <= n; i += lastPrime){
-            myArray[i] = 1;
-        }
-    }
-    
+    free(arr);
 }
 
 // 'argc' contains the number of program arguments, and
