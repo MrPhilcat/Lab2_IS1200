@@ -25,6 +25,33 @@ void print_number(int n){
   printf("%10d ", n);
 }
 
+void print_sieves(int n){
+    char arr[n-1];
+    for(char i = 0; i <= (n - 2); i++){
+        arr[i] = i + 2;
+    }
+    char p = 2;
+    char lastPrime;
+    do{
+        // We interpret "marked" = 0
+        for(char i = 2; i*p <= n; i++){
+            arr[i*p-2] = 0;
+        }
+    
+        lastPrime = p;
+        for(char i = p-2; p == lastPrime && i <= (n-2); i++){
+            if(arr[i] > p){
+                p = arr[i];
+                //printf("%d\n", p);
+            }
+        }
+    } while (lastPrime != p);
+
+    for(char i = 0; i <= (n - 2); i++){
+        if(arr[i] != 0)
+            print_number(arr[i]);
+    }
+}
 
 void print_sieves_cool(int n){
     int myArray[n+1];
@@ -63,7 +90,7 @@ int main(int argc, char *argv[]){
         print_sieves(atoi(argv[1]));
     }
   else
-    printf("Please state an integer number.\n");
+    printf("Please state an integer number (n > 1).\n");
   return 0;
 }
 

@@ -53,7 +53,7 @@ int main(int argc, char *argv[]){
         print_primes(atoi(argv[1]));
     }
   else
-    printf("Please state an integer number.\n");
+    printf("Please state an integer number (n > 1).\n");
   return 0;
 }
 
