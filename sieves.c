@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 #define COLUMNS 6
@@ -54,18 +55,18 @@ void print_sieves(int n){
 }
 
 void print_sieves_cool(int n){
-    int myArray[n+1];
-    myArray[0] = 1;
-    myArray[1] = 1;
+    bool myArray[n+1];
+    myArray[0] = true;
+    myArray[1] = true;
     for(int i = 2; i <= n; i++){
-        myArray[i] = 0;
+        myArray[i] = false;
     }
 
     while (1){
         int lastPrime = 0;
         int j = 2;
         while (lastPrime == 0){
-            if(myArray[j] == 0)
+            if(myArray[j] == false)
                 lastPrime = j;
             if(j > n){
                 return;
@@ -75,7 +76,7 @@ void print_sieves_cool(int n){
         print_number(lastPrime);
     
         for(int i = lastPrime; i <= n; i += lastPrime){
-            myArray[i] = 1;
+            myArray[i] = true;
         }
     }
     
@@ -87,7 +88,7 @@ void print_sieves_cool(int n){
 int main(int argc, char *argv[]){
     if(argc == 2)
     {
-        print_sieves(atoi(argv[1]));
+        print_sieves_cool(atoi(argv[1]));
     }
   else
     printf("Please state an integer number (n > 1).\n");

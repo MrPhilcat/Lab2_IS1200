@@ -15,11 +15,21 @@ char* text2 = "Yet another thing.";
 // Declare additionally needed variable
 char list1[80];
 char list2[80];
-
 int counter = 0;
 
+void copycodes(char* text, char* list, int* counter){
+  while (*text != 0){
+    *list = *text;
+    text++;
+    list += 4;
+    *counter = *counter + 1;
+  }
+  
+}
+
 void work(){
-  copycodes(text1, list1, counter);
+  copycodes(text1, &list1, &counter);
+  copycodes(text2, &list2, &counter);
 }
 
 void printlist(const int* lst){
